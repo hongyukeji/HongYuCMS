@@ -1,6 +1,6 @@
 ﻿##########################################
-官方网站：https://www.pbootcms.com
-标签手册：https://www.pbootcms.com/docs.html
+官方网站：https://www.hongyuvip.com
+标签手册：https://www.hongyuvip.com/docs.html
 ##########################################
 
 HongYuCMS V3.0.3 build 2020-10-07

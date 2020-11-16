@@ -15,7 +15,7 @@ class UpgradeController extends Controller
 {
 
     // 服务器地址
-    private $server = 'https://www.pbootcms.com';
+    private $server = 'https://www.hongyuvip.com';
 
     // 更新分支
     private $branch;

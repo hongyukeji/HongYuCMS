@@ -17,9 +17,9 @@ return array(
         
         'port' => '3306', // 数据库端口
                           
-        // 'dbname' => 'pbootcms' // 去掉注释，启用mysql数据库，注意修改前面的连接信息及type为mysqli
+        // 'dbname' => 'hongyuvip' // 去掉注释，启用mysql数据库，注意修改前面的连接信息及type为mysqli
         
-        'dbname' => '/data/pbootcms.db' // 去掉注释，启用Sqlite数据库，注意修改type为sqlite
+        'dbname' => '/data/hongyuvip.db' // 去掉注释，启用Sqlite数据库，注意修改type为sqlite
     )
 
 );

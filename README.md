@@ -96,7 +96,7 @@
 
 技术交流群：137083872
 
-官方网站：https://www.pbootcms.com/
+官方网站：https://www.hongyuvip.com/
 
 GitHub：https://github.com/hnaoyun/HongYuCMS
 

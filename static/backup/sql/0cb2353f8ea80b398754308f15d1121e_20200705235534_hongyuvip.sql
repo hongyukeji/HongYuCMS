@@ -1,5 +1,5 @@
 -- Online Database Management SQL Dump
--- 数据库名: pbootcms
+-- 数据库名: hongyuvip
 -- 生成日期: 2020-07-05 23:55:34
 -- PHP 版本: 5.6.33
 
@@ -68,7 +68,7 @@ CREATE TABLE `ay_company` (
 --
 
 INSERT INTO `ay_company` (`id`,`acode`,`name`,`address`,`postcode`,`contact`,`mobile`,`phone`,`fax`,`email`,`qq`,`weixin`,`blicense`,`other`) VALUES
-('1','cn','湖南某某网络科技有限公司','湖南长沙岳麓区雷锋大道888号','410000','谢先生','13988886666','0731-88886666','0731-88886666','admin@pbootcms.com','88886666','/static/upload/image/20180715/1531651052464521.png','91430102567888888G','');
+('1','cn','湖南某某网络科技有限公司','湖南长沙岳麓区雷锋大道888号','410000','谢先生','13988886666','0731-88886666','0731-88886666','admin@hongyuvip.com','88886666','/static/upload/image/20180715/1531651052464521.png','91430102567888888G','');
 
 -- --------------------------------------------------------
 
@@ -251,7 +251,7 @@ CMS源码，能够满足各类企业网站开发建设的需要。系统采用�
 {content:source} 来源
 更多简单到想哭的标签请参考开发手册...</pre>','','','','HongYuCMS是全新内核且永久开源免费的PHP企业网站开发建设管理系统，是一套高效、简洁、 强悍的可免费商用的PHP CMS源码，能够满足各类企业网站开发建设的需要。系统采用简单到想哭的模板标签，只要懂HTML就可快速开发企业网站。官方提供了大量网站模板免费下载和使用，将致力于为广大开发者和企','255','1','0','0','0','37','0','0','admin','admin','2018-04-11 17:26:11','2019-08-05 11:19:51','4','',''),
 ('2','cn','10','','在线留言','#333333','','','admin','本站','','2018-04-11 17:30:36','','','','','','','','255','1','0','0','0','26','0','0','admin','admin','2018-04-11 17:30:36','2018-04-11 17:30:36','4','',''),
-('3','cn','11','','联系我们','#333333','','','admin','本站','','2018-04-11 17:31:29','','','<p>官方网站：<a href="http://www.pbootcms.com">www.pbootcms.com</a><br/></p><p>技术交流群： 137083872</p><p><br/></p><p>我们一直秉承大道至简分享便可改变世界的理念，坚持做最简约灵活的HongYuCMS开源软件！</p><p>您的每一份帮助都将支持HongYuCMS做的更好，走的更远！</p><p>我们一直在坚持不懈地努力，并尽可能让HongYuCMS完全开源免费，您的帮助将使我们更有动力和信心^_^！</p><p>扫一扫官网付款码赞助我们，您的支持是开发者不断前进的动力！</p><p><br/></p><p><strong>您的每一份捐赠将用来：</strong></p><p>深入HongYuCMS核心的开发、</p><p>做丰富的应用；</p><p>设计更爽的用户界面；</p><p>吸引更多的模板开发者和应用开发者；</p><p>奖励更多优秀贡献者。</p><p>把HongYuCMS技术交流群137083872推荐给伱自己有兴趣的群做宣传，也是对我们的帮助哟！~~</p><p><img src="/static/upload/image/20180413/1523583018133454.png"/></p><p><br/></p>','','','','','255','1','0','0','0','18','0','0','admin','admin','2018-04-11 17:31:29','2018-04-13 09:30:19','4','',''),
+('3','cn','11','','联系我们','#333333','','','admin','本站','','2018-04-11 17:31:29','','','<p>官方网站：<a href="http://www.hongyuvip.com">www.hongyuvip.com</a><br/></p><p>技术交流群： 137083872</p><p><br/></p><p>我们一直秉承大道至简分享便可改变世界的理念，坚持做最简约灵活的HongYuCMS开源软件！</p><p>您的每一份帮助都将支持HongYuCMS做的更好，走的更远！</p><p>我们一直在坚持不懈地努力，并尽可能让HongYuCMS完全开源免费，您的帮助将使我们更有动力和信心^_^！</p><p>扫一扫官网付款码赞助我们，您的支持是开发者不断前进的动力！</p><p><br/></p><p><strong>您的每一份捐赠将用来：</strong></p><p>深入HongYuCMS核心的开发、</p><p>做丰富的应用；</p><p>设计更爽的用户界面；</p><p>吸引更多的模板开发者和应用开发者；</p><p>奖励更多优秀贡献者。</p><p>把HongYuCMS技术交流群137083872推荐给伱自己有兴趣的群做宣传，也是对我们的帮助哟！~~</p><p><img src="/static/upload/image/20180413/1523583018133454.png"/></p><p><br/></p>','','','','','255','1','0','0','0','18','0','0','admin','admin','2018-04-11 17:31:29','2018-04-13 09:30:19','4','',''),
 ('4','cn','3','','HongYuCMSV1.0.0正式发布','#333333','','','admin','本站','','2018-04-12 20:30:00','/static/upload/image/20180412/1523499864406172.jpg','','<p>
     &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 18px;">HongYuCMS是全新内核且永久开源免费的PHP企业网站开发建设管理系统，是一套高效、简洁、
  强悍的可免费商用的PHP 
@@ -928,7 +928,7 @@ CREATE TABLE `ay_link` (
 --
 
 INSERT INTO `ay_link` (`id`,`acode`,`gid`,`name`,`link`,`logo`,`sorting`,`create_user`,`update_user`,`create_time`,`update_time`) VALUES
-('1','cn','1','HongYuCMS','https://www.pbootcms.com','/static/upload/image/20180412/1523501605180536.png','255','admin','admin','2018-04-12 10:53:06','2018-04-12 10:53:26');
+('1','cn','1','HongYuCMS','https://www.hongyuvip.com','/static/upload/image/20180412/1523501605180536.png','255','admin','admin','2018-04-12 10:53:06','2018-04-12 10:53:26');
 
 -- --------------------------------------------------------
 
@@ -1512,7 +1512,7 @@ CREATE TABLE `ay_site` (
 --
 
 INSERT INTO `ay_site` (`id`,`acode`,`title`,`subtitle`,`domain`,`logo`,`keywords`,`description`,`icp`,`theme`,`statistical`,`copyright`) VALUES
-('1','cn','HongYuCMS','永久开源免费的PHP企业网站开发建设管理系统','www.pbootcms.com','/static/images/logo.png','cms,免费cms,开源cms,企业cms,建站cms','HongYuCMS是一套全新内核且永久开源免费的PHP企业网站开发建设管理系统，是一套高效、简洁、 强悍的可免费商用的PHP CMS源码，能够满足各类企业网站开发建设的需要。系统采用简单到想哭的模板标签，只要懂HTML就可快速开发企业网站。官方提供了大量网站模板免费下载和使用，将致力于为广大开发者和企业提供最佳的网站开发建设解决方案。','湘ICP备88888888号','default','','Copyright © 2018-2020 HongYuCMS All Rights Reserved.');
+('1','cn','HongYuCMS','永久开源免费的PHP企业网站开发建设管理系统','www.hongyuvip.com','/static/images/logo.png','cms,免费cms,开源cms,企业cms,建站cms','HongYuCMS是一套全新内核且永久开源免费的PHP企业网站开发建设管理系统，是一套高效、简洁、 强悍的可免费商用的PHP CMS源码，能够满足各类企业网站开发建设的需要。系统采用简单到想哭的模板标签，只要懂HTML就可快速开发企业网站。官方提供了大量网站模板免费下载和使用，将致力于为广大开发者和企业提供最佳的网站开发建设解决方案。','湘ICP备88888888号','default','','Copyright © 2018-2020 HongYuCMS All Rights Reserved.');
 
 -- --------------------------------------------------------
 
@@ -1544,8 +1544,8 @@ CREATE TABLE `ay_slide` (
 --
 
 INSERT INTO `ay_slide` (`id`,`acode`,`gid`,`pic`,`link`,`title`,`subtitle`,`sorting`,`create_user`,`update_user`,`create_time`,`update_time`) VALUES
-('1','cn','1','/static/upload/image/20180412/1523500997605565.jpg','http://www.pbootcms.com','HongYuCMS','永久开源、免费的PHP建站系统','255','admin','admin','2018-03-01 16:19:03','2018-04-12 10:43:19'),
-('2','cn','1','/static/upload/image/20180412/1523501147676550.jpg','http://www.pbootcms.com','HongYuCMS','高效、简洁、强悍的PHP建站源码','255','admin','admin','2018-04-12 10:46:07','2018-04-12 10:46:07');
+('1','cn','1','/static/upload/image/20180412/1523500997605565.jpg','http://www.hongyuvip.com','HongYuCMS','永久开源、免费的PHP建站系统','255','admin','admin','2018-03-01 16:19:03','2018-04-12 10:43:19'),
+('2','cn','1','/static/upload/image/20180412/1523501147676550.jpg','http://www.hongyuvip.com','HongYuCMS','高效、简洁、强悍的PHP建站源码','255','admin','admin','2018-04-12 10:46:07','2018-04-12 10:46:07');
 
 -- --------------------------------------------------------
 
@@ -1591,7 +1591,7 @@ CREATE TABLE `ay_tags` (
 --
 
 INSERT INTO `ay_tags` (`id`,`acode`,`name`,`link`,`create_user`,`update_user`,`create_time`,`update_time`) VALUES
-('1','cn','HongYuCMS','https://www.pbootcms.com','admin','admin','2019-07-12 14:33:13','2019-07-12 14:33:13');
+('1','cn','HongYuCMS','https://www.hongyuvip.com','admin','admin','2019-07-12 14:33:13','2019-07-12 14:33:13');
 
 -- --------------------------------------------------------
 

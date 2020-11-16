@@ -52,15 +52,15 @@ class IndexController extends Controller
         $dbsecurity = true;
         // 如果是sqlite数据库，并且路径为默认的，则标记为不安全
         if (get_db_type() == 'sqlite') {
-            if (strpos($this->config('database.dbname'), 'pbootcms') !== false) {
+            if (strpos($this->config('database.dbname'), 'hongyuvip') !== false) {
                 if (get_user_ip() != '127.0.0.1' && $this->modDB()) { // 非本地测试时尝试自动修改数据库名称
                     $dbsecurity = true;
                 } else {
                     $dbsecurity = false;
                 }
             }
-        } elseif (file_exists(ROOT_PATH . '/data/pbootcms.db')) {
-            rename(ROOT_PATH . '/data/pbootcms.db', ROOT_PATH . '/data/' . get_uniqid() . '.db');
+        } elseif (file_exists(ROOT_PATH . '/data/hongyuvip.db')) {
+            rename(ROOT_PATH . '/data/hongyuvip.db', ROOT_PATH . '/data/' . get_uniqid() . '.db');
         }
         
         $this->assign('dbsecurity', $dbsecurity);
