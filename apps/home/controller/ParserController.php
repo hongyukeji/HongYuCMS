@@ -47,10 +47,10 @@ class ParserController extends Controller
     public function parserAfter($content)
     {
         // 默认页面信息替换
-        $content = str_replace('{pboot:pagetitle}', $this->config('other_title') ?: '{pboot:sitetitle}-{pboot:sitesubtitle}', $content);
-        $content = str_replace('{pboot:pagekeywords}', '{pboot:sitekeywords}', $content);
-        $content = str_replace('{pboot:pagedescription}', '{pboot:sitedescription}', $content);
-        $content = str_replace('{pboot:keyword}', get('keyword', 'vars'), $content); // 当前搜索的关键字
+        $content = str_replace('{hongyu:pagetitle}', $this->config('other_title') ?: '{hongyu:sitetitle}-{hongyu:sitesubtitle}', $content);
+        $content = str_replace('{hongyu:pagekeywords}', '{hongyu:sitekeywords}', $content);
+        $content = str_replace('{hongyu:pagedescription}', '{hongyu:sitedescription}', $content);
+        $content = str_replace('{hongyu:keyword}', get('keyword', 'vars'), $content); // 当前搜索的关键字
                                                                                      
         // 解析个人扩展标签，升级不覆盖
         if (file_exists(APP_PATH . '/home/controller/ExtLabelController.php')) {
@@ -89,7 +89,7 @@ class ParserController extends Controller
     // 保存保留内容
     public function savePreLabel($content)
     {
-        $pattern = '/\{pboot:pre}([\s\S]*?)\{\/pboot:pre\}/';
+        $pattern = '/\{hongyu:pre}([\s\S]*?)\{\/hongyu:pre\}/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
             for ($i = 0; $i < $count; $i ++) {
@@ -111,37 +111,37 @@ class ParserController extends Controller
                 $content = str_replace($matches[0][$i], $this->pre[$matches[1][$i]], $content);
             }
         }
-        $content = str_replace('pboot@if', 'pboot:if', $content); // 还原系统解析if标签
+        $content = str_replace('hongyu@if', 'hongyu:if', $content); // 还原系统解析if标签
         return $content;
     }
 
     // 解析单标签
     public function parserSingleLabel($content)
     {
-        $content = str_replace('{pboot:ucenter}', Url::home('member/ucenter'), $content); // 用户中心
+        $content = str_replace('{hongyu:ucenter}', Url::home('member/ucenter'), $content); // 用户中心
         if (! ! $url = get("backurl")) { // 获取会跳地址
-            $content = str_replace('{pboot:login}', Url::home('member/login', null, "backurl=" . urlencode($url)), $content); // 登录地址
+            $content = str_replace('{hongyu:login}', Url::home('member/login', null, "backurl=" . urlencode($url)), $content); // 登录地址
         } else {
-            $content = str_replace('{pboot:login}', Url::home('member/login'), $content); // 登录地址
+            $content = str_replace('{hongyu:login}', Url::home('member/login'), $content); // 登录地址
         }
         
-        $content = str_replace('{pboot:register}', Url::home('member/register'), $content); // 注册地址
-        $content = str_replace('{pboot:isregister}', Url::home('member/isRegister'), $content); // 检查是否注册地址
-        $content = str_replace('{pboot:umodify}', Url::home('member/umodify'), $content); // 修改资料地址
-        $content = str_replace('{pboot:logout}', Url::home('member/logout'), $content); // 推出登录
-        $content = str_replace('{pboot:upload}', Url::home('member/upload'), $content); // 上传资料
+        $content = str_replace('{hongyu:register}', Url::home('member/register'), $content); // 注册地址
+        $content = str_replace('{hongyu:isregister}', Url::home('member/isRegister'), $content); // 检查是否注册地址
+        $content = str_replace('{hongyu:umodify}', Url::home('member/umodify'), $content); // 修改资料地址
+        $content = str_replace('{hongyu:logout}', Url::home('member/logout'), $content); // 推出登录
+        $content = str_replace('{hongyu:upload}', Url::home('member/upload'), $content); // 上传资料
         
-        if (strpos($content, '{pboot:sendemail}')) {
+        if (strpos($content, '{hongyu:sendemail}')) {
             session('sendemail', true); // 避免非法外部提交
-            $content = str_replace('{pboot:sendemail}', Url::home('member/sendEmail'), $content); // 上传资料
+            $content = str_replace('{hongyu:sendemail}', Url::home('member/sendEmail'), $content); // 上传资料
         } else {
             session('sendemail', false);
         }
         
-        $content = str_replace('{pboot:islogin}', session('pboot_uid') ? 1 : 0, $content); // 是否登录
-        if (strpos($content, '{pboot:mustlogin}') !== false) {
-            $content = str_replace('{pboot:mustlogin}', '', $content);
-            if (! session('pboot_uid')) { // 没有经登录
+        $content = str_replace('{hongyu:islogin}', session('hongyu_uid') ? 1 : 0, $content); // 是否登录
+        if (strpos($content, '{hongyu:mustlogin}') !== false) {
+            $content = str_replace('{hongyu:mustlogin}', '', $content);
+            if (! session('hongyu_uid')) { // 没有经登录
                 if ($this->config('login_no_wait')) {
                     location(Url::home('member/login', null, "backurl=" . urlencode(get_current_url())));
                 } else {
@@ -150,30 +150,30 @@ class ParserController extends Controller
             }
         }
         
-        $content = str_replace('{pboot:msgaction}', Url::home('message'), $content); // 留言提交路径
-        $content = str_replace('{pboot:scaction}', Url::home('search'), $content); // 搜索提交路径
-        $content = str_replace('{pboot:msgcodestatus}', $this->config('message_check_code') === '0' ? 0 : 1, $content); // 是否开留言启验证码
-        $content = str_replace('{pboot:formcodestatus}', $this->config('form_check_code') === '0' ? 0 : 1, $content); // 是否开启表单验证码
+        $content = str_replace('{hongyu:msgaction}', Url::home('message'), $content); // 留言提交路径
+        $content = str_replace('{hongyu:scaction}', Url::home('search'), $content); // 搜索提交路径
+        $content = str_replace('{hongyu:msgcodestatus}', $this->config('message_check_code') === '0' ? 0 : 1, $content); // 是否开留言启验证码
+        $content = str_replace('{hongyu:formcodestatus}', $this->config('form_check_code') === '0' ? 0 : 1, $content); // 是否开启表单验证码
         
-        $content = str_replace('{pboot:checkcode}', CORE_DIR . '/code.php', $content); // 验证码路径
-        $content = str_replace('{pboot:lgpath}', Url::get('home/Do/area'), $content); // 多语言切换前置路径,如{pboot:lgpath}?lg=cn
+        $content = str_replace('{hongyu:checkcode}', CORE_DIR . '/code.php', $content); // 验证码路径
+        $content = str_replace('{hongyu:lgpath}', Url::get('home/Do/area'), $content); // 多语言切换前置路径,如{hongyu:lgpath}?lg=cn
         
-        $content = str_replace('{pboot:appid}', $this->config('api_appid'), $content); // API认证用户
-        $content = str_replace('{pboot:timestamp}', time(), $content); // 认证时间戳
-        $content = str_replace('{pboot:signature}', md5(md5($this->config('api_appid') . $this->config('api_secret') . time())), $content); // API认证密钥
+        $content = str_replace('{hongyu:appid}', $this->config('api_appid'), $content); // API认证用户
+        $content = str_replace('{hongyu:timestamp}', time(), $content); // 认证时间戳
+        $content = str_replace('{hongyu:signature}', md5(md5($this->config('api_appid') . $this->config('api_secret') . time())), $content); // API认证密钥
         
-        $content = str_replace('{pboot:httpurl}', get_http_url(), $content); // 当前访问的域名地址
-        $content = str_replace('{pboot:pageurl}', get_current_url(), $content); // 当前页面的地址
+        $content = str_replace('{hongyu:httpurl}', get_http_url(), $content); // 当前访问的域名地址
+        $content = str_replace('{hongyu:pageurl}', get_current_url(), $content); // 当前页面的地址
         
-        $content = str_replace('{pboot:registercodestatus}', $this->config('register_check_code') === '0' ? 0 : ($this->config('register_check_code') ?: 1), $content); // 是否开启注册验证码
-        $content = str_replace('{pboot:logincodestatus}', $this->config('login_check_code') === '0' ? 0 : 1, $content); // 是否开启评论验证码
-        $content = str_replace('{pboot:commentcodestatus}', $this->config('comment_check_code') === '0' ? 0 : 1, $content); // 是否开启评论验证码
-        $content = str_replace('{pboot:commentaction}', Url::home('comment/add', null, "contentid={content:id}"), $content); // 评论提交路径
-        $content = str_replace('{pboot:mycommentpage}', Url::home('comment/my'), $content); // 我的评论
+        $content = str_replace('{hongyu:registercodestatus}', $this->config('register_check_code') === '0' ? 0 : ($this->config('register_check_code') ?: 1), $content); // 是否开启注册验证码
+        $content = str_replace('{hongyu:logincodestatus}', $this->config('login_check_code') === '0' ? 0 : 1, $content); // 是否开启评论验证码
+        $content = str_replace('{hongyu:commentcodestatus}', $this->config('comment_check_code') === '0' ? 0 : 1, $content); // 是否开启评论验证码
+        $content = str_replace('{hongyu:commentaction}', Url::home('comment/add', null, "contentid={content:id}"), $content); // 评论提交路径
+        $content = str_replace('{hongyu:mycommentpage}', Url::home('comment/my'), $content); // 我的评论
         
-        $content = str_replace('{pboot:registerstatus}', $this->config('register_status') === '0' ? 0 : 1, $content); // 是否开启注册
-        $content = str_replace('{pboot:loginstatus}', $this->config('login_status') === '0' ? 0 : 1, $content); // 是否开启登录
-        $content = str_replace('{pboot:commentstatus}', $this->config('comment_status') === '0' ? 0 : 1, $content); // 是否开启评论
+        $content = str_replace('{hongyu:registerstatus}', $this->config('register_status') === '0' ? 0 : 1, $content); // 是否开启注册
+        $content = str_replace('{hongyu:loginstatus}', $this->config('login_status') === '0' ? 0 : 1, $content); // 是否开启登录
+        $content = str_replace('{hongyu:commentstatus}', $this->config('comment_status') === '0' ? 0 : 1, $content); // 是否开启评论
         
         return $content;
     }
@@ -181,7 +181,7 @@ class ParserController extends Controller
     // 解析站点标签
     public function parserSiteLabel($content)
     {
-        $pattern = '/\{pboot:site([\w]+)(\s+[^}]+)?\}/';
+        $pattern = '/\{hongyu:site([\w]+)(\s+[^}]+)?\}/';
         if (preg_match_all($pattern, $content, $matches)) {
             $data = $this->model->getSite();
             $count = count($matches[0]);
@@ -243,7 +243,7 @@ class ParserController extends Controller
     // 解析公司标签
     public function parserCompanyLabel($content)
     {
-        $pattern = '/\{pboot:company([\w]+)(\s+[^}]+)?\}/';
+        $pattern = '/\{hongyu:company([\w]+)(\s+[^}]+)?\}/';
         if (preg_match_all($pattern, $content, $matches)) {
             $data = $this->model->getCompany();
             $count = count($matches[0]);
@@ -362,9 +362,9 @@ class ParserController extends Controller
     // 解析栏目列表标签
     public function parserNavLabel($content)
     {
-        $pattern = '/\{pboot:nav(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:nav\}/';
+        $pattern = '/\{hongyu:nav(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:nav\}/';
         $pattern2 = '/\[nav:([\w]+)(\s+[^]]+)?\]/';
-        $pattern3 = '/pboot:([0-9])+nav/';
+        $pattern3 = '/hongyu:([0-9])+nav/';
         if (preg_match_all($pattern, $content, $matches)) {
             $data = $this->model->getSortsTree();
             $count = count($matches[0]);
@@ -483,7 +483,7 @@ class ParserController extends Controller
                 
                 // 无限极嵌套解析
                 if (preg_match($pattern3, $out_html, $matches3)) {
-                    $out_html = str_replace('pboot:' . $matches3[1] . 'nav', 'pboot:nav', $out_html);
+                    $out_html = str_replace('hongyu:' . $matches3[1] . 'nav', 'hongyu:nav', $out_html);
                     $out_html = str_replace('[' . $matches3[1] . 'nav:', '[nav:', $out_html);
                     $out_html = $this->parserNavLabel($out_html);
                 }
@@ -498,7 +498,7 @@ class ParserController extends Controller
     // 解析当前位置
     public function parserPositionLabel($content, $scode, $page = null, $link = null)
     {
-        $pattern = '/\{pboot:position(\s+[^}]+)?\}/';
+        $pattern = '/\{hongyu:position(\s+[^}]+)?\}/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
             $data = $this->model->getPosition($scode);
@@ -659,14 +659,14 @@ class ParserController extends Controller
                         if ($sort->keywords) {
                             $content = str_replace($matches[0][$i], $this->adjustLabelData($params, $sort->keywords), $content);
                         } else {
-                            $content = str_replace($matches[0][$i], '{pboot:sitekeywords}', $content);
+                            $content = str_replace($matches[0][$i], '{hongyu:sitekeywords}', $content);
                         }
                         break;
                     case 'description': // 如果栏目描述为空，则自动使用全局描述
                         if ($sort->description) {
                             $content = str_replace($matches[0][$i], $this->adjustLabelData($params, $sort->description), $content);
                         } else {
-                            $content = str_replace($matches[0][$i], '{pboot:sitedescription}', $content);
+                            $content = str_replace($matches[0][$i], '{hongyu:sitedescription}', $content);
                         }
                         break;
                     default:
@@ -718,10 +718,10 @@ class ParserController extends Controller
                         $content = str_replace($this->adjustLabelData($params, $matches[0][$i]), $page, $content);
                         break;
                     case 'keywords': // 当前分类关键字,使用全局
-                        $content = str_replace($this->adjustLabelData($params, $matches[0][$i]), '{pboot:sitekeywords}', $content);
+                        $content = str_replace($this->adjustLabelData($params, $matches[0][$i]), '{hongyu:sitekeywords}', $content);
                         break;
                     case 'description': // 当前分类描述,使用全局
-                        $content = str_replace($this->adjustLabelData($params, $matches[0][$i]), '{pboot:sitedescription}', $content);
+                        $content = str_replace($this->adjustLabelData($params, $matches[0][$i]), '{hongyu:sitedescription}', $content);
                         break;
                     default:
                         $content = str_replace($matches[0][$i], '', $content);
@@ -734,7 +734,7 @@ class ParserController extends Controller
     // 解析指定分类标签
     public function parserSpecifySortLabel($content)
     {
-        $pattern = '/\{pboot:sort(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:sort\}/';
+        $pattern = '/\{hongyu:sort(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:sort\}/';
         $pattern2 = '/\[sort:([\w]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -846,7 +846,7 @@ class ParserController extends Controller
     // 解析筛选全部
     public function parserSelectAllLabel($content)
     {
-        $pattern = '/\{pboot:selectall(\s+[^}]+)?\}/';
+        $pattern = '/\{hongyu:selectall(\s+[^}]+)?\}/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
             for ($i = 0; $i < $count; $i ++) {
@@ -972,7 +972,7 @@ class ParserController extends Controller
     // 解析筛选标签
     public function parserSelectLabel($content)
     {
-        $pattern = '/\{pboot:select(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:select\}/';
+        $pattern = '/\{hongyu:select(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:select\}/';
         $pattern2 = '/\[select:([\w]+)(\s+[^]]+)?\]/';
         
         // 参数处理
@@ -1124,7 +1124,7 @@ class ParserController extends Controller
     // 解析内容列表标签
     public function parserListLabel($content, $cscode = '')
     {
-        $pattern = '/\{pboot:list(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:list\}/';
+        $pattern = '/\{hongyu:list(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:list\}/';
         $pattern2 = '/\[list:([\w\+\-\*\/\%]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -1440,7 +1440,7 @@ class ParserController extends Controller
     // 解析指定内容标签,单页支持使用scode调用
     public function parserSpecifyContentLabel($content)
     {
-        $pattern = '/\{pboot:content(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:content\}/';
+        $pattern = '/\{hongyu:content(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:content\}/';
         $pattern2 = '/\[content:([\w]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -1495,7 +1495,7 @@ class ParserController extends Controller
     // 解析指定内容多图
     public function parserContentPicsLabel($content)
     {
-        $pattern = '/\{pboot:pics(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:pics\}/';
+        $pattern = '/\{hongyu:pics(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:pics\}/';
         $pattern2 = '/\[pics:([\w]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -1588,7 +1588,7 @@ class ParserController extends Controller
     // 解析指定内容多选
     public function parserContentCheckboxLabel($content)
     {
-        $pattern = '/\{pboot:checkbox(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:checkbox\}/';
+        $pattern = '/\{hongyu:checkbox(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:checkbox\}/';
         $pattern2 = '/\[checkbox:([\w]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -1674,7 +1674,7 @@ class ParserController extends Controller
     // 解析内容tags
     public function parserContentTagsLabel($content)
     {
-        $pattern = '/\{pboot:tags(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:tags\}/';
+        $pattern = '/\{hongyu:tags(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:tags\}/';
         $pattern2 = '/\[tags:([\w]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -1826,7 +1826,7 @@ class ParserController extends Controller
     // 解析幻灯片标签
     public function parserSlideLabel($content)
     {
-        $pattern = '/\{pboot:slide(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:slide\}/';
+        $pattern = '/\{hongyu:slide(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:slide\}/';
         $pattern2 = '/\[slide:([\w]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -1923,7 +1923,7 @@ class ParserController extends Controller
     // 解析友情链接标签
     public function parserLinkLabel($content)
     {
-        $pattern = '/\{pboot:link(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:link\}/';
+        $pattern = '/\{hongyu:link(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:link\}/';
         $pattern2 = '/\[link:([\w]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -2019,7 +2019,7 @@ class ParserController extends Controller
     // 解析留言板标签
     public function parserMessageLabel($content)
     {
-        $pattern = '/\{pboot:message(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:message\}/';
+        $pattern = '/\{hongyu:message(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:message\}/';
         $pattern2 = '/\[message:([\w]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -2140,7 +2140,7 @@ class ParserController extends Controller
     // 解析表单数据标签
     public function parserFormLabel($content)
     {
-        $pattern = '/\{pboot:formlist(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:formlist\}/';
+        $pattern = '/\{hongyu:formlist(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:formlist\}/';
         $pattern2 = '/\[form:([\w]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -2241,7 +2241,7 @@ class ParserController extends Controller
     // 解析表单提交标签
     public function parserSubmitFormLabel($content)
     {
-        $pattern = '/\{pboot:form(\s+[^}]+)?\}/';
+        $pattern = '/\{hongyu:form(\s+[^}]+)?\}/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
             for ($i = 0; $i < $count; $i ++) {
@@ -2266,9 +2266,9 @@ class ParserController extends Controller
     // 解析文章评论
     public function parserCommentLabel($content)
     {
-        $pattern = '/\{pboot:comment(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:comment\}/';
+        $pattern = '/\{hongyu:comment(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:comment\}/';
         $pattern2 = '/\[comment:([\w]+)(\s+[^]]+)?\]/';
-        $pattern3 = '/\{pboot:commentsub(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:commentsub\}/';
+        $pattern3 = '/\{hongyu:commentsub(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:commentsub\}/';
         $pattern4 = '/\[commentsub:([\w]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -2385,7 +2385,7 @@ class ParserController extends Controller
     // 解析我的评论
     public function parserMyCommentLabel($content)
     {
-        $pattern = '/\{pboot:mycomment(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:mycomment\}/';
+        $pattern = '/\{hongyu:mycomment(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:mycomment\}/';
         $pattern2 = '/\[mycomment:([\w]+)(\s+[^]]+)?\]/';
         
         if (preg_match_all($pattern, $content, $matches)) {
@@ -2542,7 +2542,7 @@ class ParserController extends Controller
     // 解析评论子楼层
     public function parserCommentsubLabel($content)
     {
-        $pattern = '/\{pboot:commentsub(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:commentsub\}/';
+        $pattern = '/\{hongyu:commentsub(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:commentsub\}/';
         $pattern2 = '/\[commentsub:([\w]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -2670,7 +2670,7 @@ class ParserController extends Controller
     // 解析二维码生成标签
     public function parserQrcodeLabel($content)
     {
-        $pattern = '/\{pboot:qrcode(\s+[^}]+)?\}/';
+        $pattern = '/\{hongyu:qrcode(\s+[^}]+)?\}/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
             for ($i = 0; $i < $count; $i ++) {
@@ -2695,7 +2695,7 @@ class ParserController extends Controller
     // 解析内容搜索结果标签
     public function parserSearchLabel($content)
     {
-        $pattern = '/\{pboot:search(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:search\}/';
+        $pattern = '/\{hongyu:search(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:search\}/';
         $pattern2 = '/\[search:([\w]+)(\s+[^]]+)?\]/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
@@ -3088,7 +3088,7 @@ class ParserController extends Controller
     // 解析循环标签
     public function parserLoopLabel($content)
     {
-        $pattern = '/\{pboot:loop(\s+[^}]+)?\}([\s\S]*?)\{\/pboot:loop\}/';
+        $pattern = '/\{hongyu:loop(\s+[^}]+)?\}([\s\S]*?)\{\/hongyu:loop\}/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
             for ($i = 0; $i < $count; $i ++) {
@@ -3131,8 +3131,8 @@ class ParserController extends Controller
     // 解析IF条件标签
     public function parserIfLabel($content)
     {
-        $pattern = '/\{pboot:if\(([^}^\$]+)\)\}([\s\S]*?)\{\/pboot:if\}/';
-        $pattern2 = '/pboot:([0-9])+if/';
+        $pattern = '/\{hongyu:if\(([^}^\$]+)\)\}([\s\S]*?)\{\/hongyu:if\}/';
+        $pattern2 = '/hongyu:([0-9])+if/';
         if (preg_match_all($pattern, $content, $matches)) {
             $count = count($matches[0]);
             for ($i = 0; $i < $count; $i ++) {
@@ -3190,7 +3190,7 @@ class ParserController extends Controller
                 
                 // 无限极嵌套解析
                 if (preg_match($pattern2, $out_html, $matches3)) {
-                    $out_html = str_replace('pboot:' . $matches3[1] . 'if', 'pboot:if', $out_html);
+                    $out_html = str_replace('hongyu:' . $matches3[1] . 'if', 'hongyu:if', $out_html);
                     $out_html = str_replace('{' . $matches3[1] . 'else}', '{else}', $out_html);
                     $out_html = $this->parserIfLabel($out_html);
                 }
@@ -3731,14 +3731,14 @@ class ParserController extends Controller
                 if ($data->keywords) {
                     $content = str_replace($search, $this->adjustLabelData($params, $data->keywords), $content);
                 } else {
-                    $content = str_replace($search, '{pboot:sitekeywords}', $content);
+                    $content = str_replace($search, '{hongyu:sitekeywords}', $content);
                 }
                 break;
             case 'description': // 如果内容描述为空，则自动使用全局描述
                 if ($data->description) {
                     $content = str_replace($search, $this->adjustLabelData($params, $data->description), $content);
                 } else {
-                    $content = str_replace($search, '{pboot:sitedescription}', $content);
+                    $content = str_replace($search, '{hongyu:sitedescription}', $content);
                 }
                 break;
             default:
@@ -3807,75 +3807,75 @@ class ParserController extends Controller
             switch ($key) {
                 case 'showgcode': // 指定等级显示，支持多个逗号隔开
                     $showgcode = explode(',', $params['showgcode']);
-                    if (! in_array(session('pboot_gcode'), $showgcode)) {
+                    if (! in_array(session('hongyu_gcode'), $showgcode)) {
                         return false;
                     }
                     break;
                 case 'showucode': // 指定用户显示，支持多个逗号隔开
                     $showucode = explode(',', $params['showucode']);
-                    if (! in_array(session('pboot_ucode'), $showucode)) {
+                    if (! in_array(session('hongyu_ucode'), $showucode)) {
                         return false;
                     }
                     break;
                 case 'hidegcode': // 指定等级隐藏，支持多个逗号隔开
                     $hidegcode = explode(',', $params['hidegcode']);
-                    if (in_array(session('pboot_gcode'), $hidegcode)) {
+                    if (in_array(session('hongyu_gcode'), $hidegcode)) {
                         return false;
                     }
                     break;
                 case 'hideucode': // 指定用户隐藏，支持多个逗号隔开
                     $hideucode = explode(',', $params['hideucode']);
-                    if (in_array(session('pboot_ucode'), $hideucode)) {
+                    if (in_array(session('hongyu_ucode'), $hideucode)) {
                         return false;
                     }
                     break;
                 case 'showgcodelt': // 等级小于显示
-                    if ($params['showgcodelt'] <= session('pboot_gcode')) {
+                    if ($params['showgcodelt'] <= session('hongyu_gcode')) {
                         return false;
                     }
                     break;
                 case 'showgcodegt': // 等级大于显示
-                    if ($params['showgcodegt'] >= session('pboot_gcode')) {
+                    if ($params['showgcodegt'] >= session('hongyu_gcode')) {
                         return false;
                     }
                     break;
                 case 'showgcodele': // 等级小于等于显示
-                    if ($params['showgcodele'] < session('pboot_gcode')) {
+                    if ($params['showgcodele'] < session('hongyu_gcode')) {
                         return false;
                     }
                     break;
                 case 'showgcodege': // 等级大于等于显示
-                    if ($params['showgcodege'] > session('pboot_gcode')) {
+                    if ($params['showgcodege'] > session('hongyu_gcode')) {
                         return false;
                     }
                     break;
                 case 'hidegcodelt': // 等级小于隐藏
-                    if ($params['hidegcodelt'] > session('pboot_gcode')) {
+                    if ($params['hidegcodelt'] > session('hongyu_gcode')) {
                         return false;
                     }
                     break;
                 case 'hidegcodegt': // 等级大于隐藏
-                    if ($params['hidegcodegt'] < session('pboot_gcode')) {
+                    if ($params['hidegcodegt'] < session('hongyu_gcode')) {
                         return false;
                     }
                     break;
                 case 'hidegcodele': // 等级小于等于隐藏
-                    if ($params['hidegcodele'] >= session('pboot_gcode')) {
+                    if ($params['hidegcodele'] >= session('hongyu_gcode')) {
                         return false;
                     }
                     break;
                 case 'hidegcodege': // 等级大于等于隐藏
-                    if ($params['hidegcodege'] <= session('pboot_gcode')) {
+                    if ($params['hidegcodege'] <= session('hongyu_gcode')) {
                         return false;
                     }
                     break;
                 case 'showlogin': // 登录后显示
-                    if ($params['showlogin'] && ! session('pboot_uid')) {
+                    if ($params['showlogin'] && ! session('hongyu_uid')) {
                         return false;
                     }
                     break;
                 case 'hidelogin': // 登录后隐藏
-                    if ($params['hidelogin'] && session('pboot_uid')) {
+                    if ($params['hidelogin'] && session('hongyu_uid')) {
                         return false;
                     }
                     break;

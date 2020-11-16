@@ -36,7 +36,7 @@ class Controller
     {
         $view = View::getInstance();
         if (Config::get('tpl_html_cache')) {
-            $content = str_replace('{pboot:runtime}', 'Cached at ' . date('Y-m-d H:i:s'), $content);
+            $content = str_replace('{hongyu:runtime}', 'Cached at ' . date('Y-m-d H:i:s'), $content);
         } else {
             $content = $this->runtime($content);
         }
@@ -99,7 +99,7 @@ class Controller
     // 解析运行时间标签
     private function runtime($content)
     {
-        return str_replace('{pboot:runtime}', 'Processed in ' . round(microtime(true) - START_TIME, 6) . ' second(s).', $content);
+        return str_replace('{hongyu:runtime}', 'Processed in ' . round(microtime(true) - START_TIME, 6) . ' second(s).', $content);
     }
 
     // 压缩内容

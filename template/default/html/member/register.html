@@ -32,7 +32,7 @@
                     <input type="password" name="rpassword" required id="rpassword" class="form-control" placeholder="请再次输入登录密码">
                 </div>
                 
-                {pboot:if({pboot:registercodestatus}==1)}
+                {hongyu:if({hongyu:registercodestatus}==1)}
                 <div class="form-group">
                     <label for="checkcode">验证码</label>
                     <div class="row">
@@ -40,13 +40,13 @@
                             <input type="text" name="checkcode" required id="checkcode" class="form-control" placeholder="请输入验证码">
                         </div>
                         <div class="col-6">
-                            <img title="点击刷新" style="height:33px;" id="codeimg" src="{pboot:checkcode}" onclick="this.src='{pboot:checkcode}?'+Math.round(Math.random()*10);" />
+                            <img title="点击刷新" style="height:33px;" id="codeimg" src="{hongyu:checkcode}" onclick="this.src='{hongyu:checkcode}?'+Math.round(Math.random()*10);" />
                         </div>
                     </div>
                 </div>
-                {/pboot:if}
+                {/hongyu:if}
                 
-                {pboot:if({pboot:registercodestatus}==2)}
+                {hongyu:if({hongyu:registercodestatus}==2)}
                 <div class="form-group">
                     <label for="checkcode">邮箱验证码</label>
                     <div class="row">
@@ -58,11 +58,11 @@
                         </div>
                     </div>
                 </div>
-                {/pboot:if}
+                {/hongyu:if}
                 
                 <div class="form-group">
                    <button type="submit" class="btn btn-info mb-2">立即注册</button>
-                   <span class="text-secondary ml-3">已有账号？<a href="{pboot:login}">马上登录</a></span>
+                   <span class="text-secondary ml-3">已有账号？<a href="{hongyu:login}">马上登录</a></span>
                 </div>
             </form>
         </div>
@@ -74,7 +74,7 @@
 
 //ajax注册
 function register(obj){
-  var url='{pboot:register}';
+  var url='{hongyu:register}';
   var username=$(obj).find("#username").val();
   var nickname=$(obj).find("#nickname").val();
   var password=$(obj).find("#password").val();
@@ -112,7 +112,7 @@ function register(obj){
 
 //发送邮件验证码
 function sendEmail(){
-  var url='{pboot:sendemail}';
+  var url='{hongyu:sendemail}';
   var username=$("#username").val();
   if(!username){
 	 $("#username").addClass("is-invalid");
@@ -145,7 +145,7 @@ function sendEmail(){
 
 //检查注册账号
 function isRegister(){
-  var url='{pboot:isregister}';
+  var url='{hongyu:isregister}';
   var username=$("#username").val();
   if(!username){
 	 $("#username").addClass("is-invalid");

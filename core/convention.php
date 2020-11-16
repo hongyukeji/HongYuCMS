@@ -110,9 +110,9 @@ return array(
         'user' => 'root', // 数据库连接用户名
         'passwd' => 'root', // 数据库连接密码
         'port' => '3306', // 数据库端口
-        'dbname' => 'pboot' // 数据库名称,如果Sqlite直接填写路径,如：/data/pboot.db
+        'dbname' => 'hongyu' // 数据库名称,如果Sqlite直接填写路径,如：/data/hongyu.db
                                 
-    // 'slave' => array( 'host' => '127.0.0.1','user' => 'root','passwd' => 'root','port' => '3306','dbname' => 'pboot')
+    // 'slave' => array( 'host' => '127.0.0.1','user' => 'root','passwd' => 'root','port' => '3306','dbname' => 'hongyu')
     ),
     
     // 第二参数作为值的控制器,缩短地址

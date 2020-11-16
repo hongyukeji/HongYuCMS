@@ -36,7 +36,7 @@ class MessageController extends Controller
             }
             
             // 需登录
-            if ($this->config('message_rqlogin') && ! session('pboot_uid')) {
+            if ($this->config('message_rqlogin') && ! session('hongyu_uid')) {
                 if (! ! $backurl = $_SERVER['HTTP_REFERER']) {
                     alert_location("请先注册登录后再留言！", Url::home('member/login', null, "backurl=" . urlencode($backurl)));
                 } else {
@@ -68,7 +68,7 @@ class MessageController extends Controller
                 if (is_array($field_data)) { // 如果是多选等情况时转换
                     $field_data = implode(',', $field_data);
                 }
-                $field_data = preg_replace_r('/pboot:if/i', '', $field_data);
+                $field_data = preg_replace_r('/hongyu:if/i', '', $field_data);
                 if ($value->required && ! $field_data) {
                     alert_back($value->description . '不能为空！');
                 } else {
@@ -89,7 +89,7 @@ class MessageController extends Controller
                 $data['status'] = $status;
                 $data['create_user'] = 'guest';
                 $data['update_user'] = 'guest';
-                $data['uid'] = session('pboot_uid');
+                $data['uid'] = session('hongyu_uid');
             }
             
             if ($this->model->addMessage($data)) {

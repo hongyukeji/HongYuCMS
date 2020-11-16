@@ -407,7 +407,7 @@ function decode_string($string)
         $string = stripcslashes($string);
         $string = htmlspecialchars_decode($string, ENT_QUOTES);
     }
-    $string = preg_replace_r('/pboot:if/i', 'pboot@if', $string); // 避免解码绕过问题
+    $string = preg_replace_r('/hongyu:if/i', 'hongyu@if', $string); // 避免解码绕过问题
     return $string;
 }
 

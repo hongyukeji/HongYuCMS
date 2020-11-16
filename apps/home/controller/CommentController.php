@@ -41,7 +41,7 @@ class CommentController extends Controller
                 alert_back('您提交太频繁了，请稍后再试！');
             }
             
-            if (! session('pboot_uid') && ! $this->config('comment_anonymous')) {
+            if (! session('hongyu_uid') && ! $this->config('comment_anonymous')) {
                 if (! ! $backurl = $_SERVER['HTTP_REFERER']) {
                     alert_location("请先注册登录后再评论！", Url::home('member/login', null, "backurl=" . urlencode($backurl)));
                 } else {
@@ -74,7 +74,7 @@ class CommentController extends Controller
                 'pid' => request('pid', 'int') ?: 0,
                 'contentid' => $contentid,
                 'comment' => $comment,
-                'uid' => session('pboot_uid'),
+                'uid' => session('hongyu_uid'),
                 'puid' => request('puid', 'int'),
                 'likes' => 0,
                 'oppose' => 0,
@@ -114,13 +114,13 @@ class CommentController extends Controller
     public function my()
     {
         // 未登录时跳转到用户登录
-        if (! session('pboot_uid')) {
+        if (! session('hongyu_uid')) {
             location(Url::home('member/login'));
         }
         
         $content = parent::parser($this->htmldir . 'member/mycomment.html'); // 框架标签解析
         $content = $this->parser->parserBefore($content); // CMS公共标签前置解析
-        $content = str_replace('{pboot:pagetitle}', '我的评论-{pboot:sitetitle}-{pboot:sitesubtitle}', $content);
+        $content = str_replace('{hongyu:pagetitle}', '我的评论-{hongyu:sitetitle}-{hongyu:sitesubtitle}', $content);
         $content = $this->parser->parserPositionLabel($content, 0, '我的评论', Url::home('comment/my')); // CMS当前位置标签解析
         $content = $this->parser->parserSpecialPageSortLabel($content, - 3, '我的评论', Url::home('comment/my')); // 解析分类标签
         $content = $this->parser->parserMyCommentLabel($content); // 我的评论
@@ -133,7 +133,7 @@ class CommentController extends Controller
     public function del()
     {
         // 未登录时跳转到用户登录
-        if (! session('pboot_uid')) {
+        if (! session('hongyu_uid')) {
             location(Url::home('member/login'));
         }
         

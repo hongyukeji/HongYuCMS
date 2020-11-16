@@ -12,13 +12,13 @@
 ##  简单到想哭的模板标签：
 ```
 1、全局标签示意：
-{pboot:sitetitle} 站点标题 
-{pboot:sitelogo} 站点logo
+{hongyu:sitetitle} 站点标题 
+{hongyu:sitelogo} 站点logo
 
 2、列表页标签示意：
-{pboot:list num=10 order=date}
+{hongyu:list num=10 order=date}
 	<p><a href="[list:link]">[list:title]</a></p>
-{/pboot:list}
+{/hongyu:list}
 
 3、内容页标签示意：
 {content:title} 标题

@@ -32,7 +32,7 @@ class MemberController extends Controller
     public function login()
     {
         // 已经登录时跳转到用户中心
-        if (session('pboot_uid')) {
+        if (session('hongyu_uid')) {
             location(Url::home('member/ucenter'));
         }
         
@@ -78,14 +78,14 @@ class MemberController extends Controller
                 if (! $login->status) {
                     alert_back('您的账号待审核，请联系管理员！');
                 }
-                session('pboot_uid', $login->id);
-                session('pboot_ucode', $login->ucode);
-                session('pboot_username', $login->username);
-                session('pboot_useremail', $login->seremail);
-                session('pboot_usermobile', $login->usermobile);
-                session('pboot_gid', $login->gid);
-                session('pboot_gcode', $login->gcode);
-                session('pboot_gname', $login->gname);
+                session('hongyu_uid', $login->id);
+                session('hongyu_ucode', $login->ucode);
+                session('hongyu_username', $login->username);
+                session('hongyu_useremail', $login->seremail);
+                session('hongyu_usermobile', $login->usermobile);
+                session('hongyu_gid', $login->gid);
+                session('hongyu_gcode', $login->gcode);
+                session('hongyu_gname', $login->gname);
                 
                 if (! ! $backurl = get('backurl')) {
                     alert_location('登录成功！', $backurl, 1);
@@ -98,7 +98,7 @@ class MemberController extends Controller
         } else {
             $content = parent::parser($this->htmldir . 'member/login.html'); // 框架标签解析
             $content = $this->parser->parserBefore($content); // CMS公共标签前置解析
-            $content = str_replace('{pboot:pagetitle}', $this->config('login_title') ?: '会员登录-{pboot:sitetitle}-{pboot:sitesubtitle}', $content);
+            $content = str_replace('{hongyu:pagetitle}', $this->config('login_title') ?: '会员登录-{hongyu:sitetitle}-{hongyu:sitesubtitle}', $content);
             $content = $this->parser->parserPositionLabel($content, 0, '会员登录', Url::home('member/login')); // CMS当前位置标签解析
             $content = $this->parser->parserSpecialPageSortLabel($content, - 2, '会员登录', Url::home('member/login')); // 解析分类标签
             $content = $this->parser->parserAfter($content); // CMS公共标签后置解析
@@ -111,7 +111,7 @@ class MemberController extends Controller
     public function register()
     {
         // 已经登录时跳转到用户中心
-        if (session('pboot_uid')) {
+        if (session('hongyu_uid')) {
             location(Url::home('member/ucenter'));
         }
         
@@ -227,7 +227,7 @@ class MemberController extends Controller
                     if (is_array($field_data)) { // 如果是多选等情况时转换
                         $field_data = implode(',', $field_data);
                     }
-                    $field_data = preg_replace_r('pboot:if', '', $field_data);
+                    $field_data = preg_replace_r('hongyu:if', '', $field_data);
                     if ($value->required && ! $field_data) {
                         alert_back($value->description . '不能为空！');
                     } else {
@@ -250,7 +250,7 @@ class MemberController extends Controller
         } else {
             $content = parent::parser($this->htmldir . 'member/register.html'); // 框架标签解析
             $content = $this->parser->parserBefore($content); // CMS公共标签前置解析
-            $content = str_replace('{pboot:pagetitle}', $this->config('register_title') ?: '会员注册-{pboot:sitetitle}-{pboot:sitesubtitle}', $content);
+            $content = str_replace('{hongyu:pagetitle}', $this->config('register_title') ?: '会员注册-{hongyu:sitetitle}-{hongyu:sitesubtitle}', $content);
             $content = $this->parser->parserPositionLabel($content, 0, '会员注册', Url::home('member/register')); // CMS当前位置标签解析
             $content = $this->parser->parserSpecialPageSortLabel($content, - 3, '会员注册', Url::home('member/register')); // 解析分类标签
             $content = $this->parser->parserAfter($content); // CMS公共标签后置解析
@@ -263,13 +263,13 @@ class MemberController extends Controller
     public function ucenter()
     {
         // 未登录时跳转到用户登录
-        if (! session('pboot_uid')) {
+        if (! session('hongyu_uid')) {
             location(Url::home('member/login'));
         }
         
         $content = parent::parser($this->htmldir . 'member/ucenter.html'); // 框架标签解析
         $content = $this->parser->parserBefore($content); // CMS公共标签前置解析
-        $content = str_replace('{pboot:pagetitle}', $this->config('ucenter_title') ?: '个人中心-{pboot:sitetitle}-{pboot:sitesubtitle}', $content);
+        $content = str_replace('{hongyu:pagetitle}', $this->config('ucenter_title') ?: '个人中心-{hongyu:sitetitle}-{hongyu:sitesubtitle}', $content);
         $content = $this->parser->parserPositionLabel($content, 0, '个人中心', Url::home('member/ucenter')); // CMS当前位置标签解析
         $content = $this->parser->parserSpecialPageSortLabel($content, - 4, '个人中心', Url::home('member/ucenter')); // 解析分类标签
         $content = $this->parser->parserAfter($content); // CMS公共标签后置解析
@@ -281,12 +281,12 @@ class MemberController extends Controller
     public function umodify()
     {
         // 未登录时跳转到用户登录
-        if (! session('pboot_uid')) {
+        if (! session('hongyu_uid')) {
             location(Url::home('member/login'));
         }
         
         // 执行资料修改
-        if ($_POST && session('pboot_uid')) {
+        if ($_POST && session('hongyu_uid')) {
             $nickname = post('nickname');
             $useremail = post('useremail');
             $usermobile = post('usermobile');
@@ -298,7 +298,7 @@ class MemberController extends Controller
                 if (! preg_match('/^[\w]+@[\w\.]+\.[a-zA-Z]+$/', $useremail)) {
                     alert_back('邮箱格式不正确，请输入正确的邮箱账号！');
                 }
-                if ($this->model->checkUsername("(useremail='$useremail' OR username='$useremail') AND id<>'" . session('pboot_uid') . "'")) {
+                if ($this->model->checkUsername("(useremail='$useremail' OR username='$useremail') AND id<>'" . session('hongyu_uid') . "'")) {
                     alert_back('您输入的邮箱已被注册！');
                 }
             }
@@ -307,7 +307,7 @@ class MemberController extends Controller
                 if (! preg_match('/^1[0-9]{10}$/', $usermobile)) {
                     alert_back('手机格式不正确，请输入正确的手机号码！');
                 }
-                if ($this->model->checkUsername("(usermobile='$usermobile' OR username='$usermobile') AND id<>'" . session('pboot_uid') . "'")) {
+                if ($this->model->checkUsername("(usermobile='$usermobile' OR username='$usermobile') AND id<>'" . session('hongyu_uid') . "'")) {
                     alert_back('您输入的手机号码已被注册！');
                 }
             }
@@ -336,7 +336,7 @@ class MemberController extends Controller
                     if (is_array($field_data)) { // 如果是多选等情况时转换
                         $field_data = implode(',', $field_data);
                     }
-                    $field_data = preg_replace_r('pboot:if', '', $field_data);
+                    $field_data = preg_replace_r('hongyu:if', '', $field_data);
                     if ($value->required && ! $field_data) {
                         alert_back($value->description . '不能为空！');
                     } else {
@@ -369,7 +369,7 @@ class MemberController extends Controller
         } else {
             $content = parent::parser($this->htmldir . 'member/umodify.html'); // 框架标签解析
             $content = $this->parser->parserBefore($content); // CMS公共标签前置解析
-            $content = str_replace('{pboot:pagetitle}', $this->config('umodify_title') ?: '资料修改-{pboot:sitetitle}-{pboot:sitesubtitle}', $content);
+            $content = str_replace('{hongyu:pagetitle}', $this->config('umodify_title') ?: '资料修改-{hongyu:sitetitle}-{hongyu:sitesubtitle}', $content);
             $content = $this->parser->parserPositionLabel($content, 0, '资料修改', Url::home('member/umodify')); // CMS当前位置标签解析
             $content = $this->parser->parserSpecialPageSortLabel($content, - 5, '资料修改', Url::home('member/umodify')); // 解析分类标签
             $content = $this->parser->parserAfter($content); // CMS公共标签后置解析
@@ -381,14 +381,14 @@ class MemberController extends Controller
     // 退出登录
     public function logout()
     {
-        session('pboot_uid', '');
-        session('pboot_ucode', '');
-        session('pboot_username', '');
-        session('pboot_useremail', '');
-        session('pboot_usermobile', '');
-        session('pboot_gid', '');
-        session('pboot_gcode', '');
-        session('pboot_gname', '');
+        session('hongyu_uid', '');
+        session('hongyu_ucode', '');
+        session('hongyu_username', '');
+        session('hongyu_useremail', '');
+        session('hongyu_usermobile', '');
+        session('hongyu_gid', '');
+        session('hongyu_gcode', '');
+        session('hongyu_gname', '');
         location(Url::home('member/login'));
     }
 
@@ -396,7 +396,7 @@ class MemberController extends Controller
     public function upload()
     {
         // 必须登录
-        if (! session('pboot_uid')) {
+        if (! session('hongyu_uid')) {
             json(0, '请先登录！');
         }
         

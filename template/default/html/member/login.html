@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 
-                {pboot:if({pboot:logincodestatus})}
+                {hongyu:if({hongyu:logincodestatus})}
                 <div class="form-group">
                     <label for="checkcode">验证码</label>
                     <div class="row">
@@ -33,15 +33,15 @@
                             <input type="text" name="checkcode" required id="checkcode" class="form-control" placeholder="请输入验证码">
                         </div>
                         <div class="col-6">
-                            <img title="点击刷新" style="height:33px;" id="codeimg" src="{pboot:checkcode}" onclick="this.src='{pboot:checkcode}?'+Math.round(Math.random()*10);" />
+                            <img title="点击刷新" style="height:33px;" id="codeimg" src="{hongyu:checkcode}" onclick="this.src='{hongyu:checkcode}?'+Math.round(Math.random()*10);" />
                         </div>
                     </div>
                 </div>
-                {/pboot:if}
+                {/hongyu:if}
                 
                 <div class="form-group">
                    <button type="submit" class="btn btn-info mb-2">立即登录</button>
-				   <span class="text-secondary ml-3">没有账号？<a href="{pboot:register}">马上注册</a></span>
+				   <span class="text-secondary ml-3">没有账号？<a href="{hongyu:register}">马上注册</a></span>
                 </div>
             </form>
         </div>
@@ -53,7 +53,7 @@
 
 //ajax登录
 function login(obj){
-  var url='{pboot:login}';
+  var url='{hongyu:login}';
   var username=$(obj).find("#username").val();
   var password=$(obj).find("#password").val();
   var checkcode=$(obj).find("#checkcode").val();

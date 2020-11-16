@@ -95,14 +95,14 @@ class MemberModel extends Model
         );
         return parent::table('ay_member a')->field($field)
             ->join($join)
-            ->where("a.id='" . session('pboot_uid') . "'")
+            ->where("a.id='" . session('hongyu_uid') . "'")
             ->find();
     }
 
     // 修改会员资料
     public function modUser($data)
     {
-        return parent::table('ay_member')->where("id='" . session('pboot_uid') . "'")->update($data);
+        return parent::table('ay_member')->where("id='" . session('hongyu_uid') . "'")->update($data);
     }
 
     // 获取第一个等级

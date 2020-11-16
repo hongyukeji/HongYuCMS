@@ -21,16 +21,16 @@
 			  	<th>操作</th>
 			  </thead>
 			  <tbody>
-			  	{pboot:mycomment num=10}
+			  	{hongyu:mycomment num=10}
 			    <tr>
 			      <td>[mycomment:i]</td>
 			      <td>[mycomment:title]</td>
 			      <td>[mycomment:comment]</td>
-			      <td>{pboot:if([mycomment:status]==1)}已审核{else}<span style="color:red">待审核</span>{/pboot:if}</td>
+			      <td>{hongyu:if([mycomment:status]==1)}已审核{else}<span style="color:red">待审核</span>{/hongyu:if}</td>
 			      <td>[mycomment:date]</td>
 			      <td><span class="del" data-url="[mycomment:delaction]" style="cursor:pointer" >删除</span></td>
 			    </tr>
-			    {/pboot:mycomment}
+			    {/hongyu:mycomment}
 			  </tbody>
 			</table>
 			{include file=comm/page.html}

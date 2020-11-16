@@ -31,6 +31,6 @@ class ExtLabelController
     // 测试扩展单个标签
     private function test()
     {
-        $this->content = str_replace('{pboot:userip}', get_user_ip(), $this->content);
+        $this->content = str_replace('{hongyu:userip}', get_user_ip(), $this->content);
     }
 }

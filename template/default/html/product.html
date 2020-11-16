@@ -15,11 +15,11 @@
                        	   <div class="swiper-slide">
                                <img src="{content:ico}">
                            </div>
-                           {pboot:pics num=10 id={content:id}}
+                           {hongyu:pics num=10 id={content:id}}
                            <div class="swiper-slide">
                                <img src="[pics:src]">
                            </div>
-                           {/pboot:pics}
+                           {/hongyu:pics}
                        </div>
                    </div>
                </div>
@@ -32,11 +32,11 @@
                        	<div class="swiper-slide active-nav swiper-slide-active">
                                <img src="{content:ico}">
                            </div>
-                           {pboot:pics num=10 id={content:id}}
+                           {hongyu:pics num=10 id={content:id}}
                            <div class="swiper-slide">
                                <img src="[pics:src]">
                            </div>
-                           {/pboot:pics}
+                           {/hongyu:pics}
                        </div>
                    </div>
                </div>
@@ -62,9 +62,9 @@
                      	 产品价格：￥{content:ext_price}
                 </div>
                 <div class="my-3 lh-3">
-                	{pboot:sort scode=11}
+                	{hongyu:sort scode=11}
                      <a href="[sort:link]" class="btn btn-danger">马上咨询</a>
-                    {/pboot:sort}
+                    {/hongyu:sort}
                 </div>
             </div>
       </div>
@@ -81,7 +81,7 @@
 {include file=comm/comment.html}
     
 
-<script src="{pboot:sitetplpath}/swiper-4.3.5/js/swiper.min.js"></script>
+<script src="{hongyu:sitetplpath}/swiper-4.3.5/js/swiper.min.js"></script>
 <script>
 var viewSwiper = new Swiper('.view .swiper-container', {
 	on:{

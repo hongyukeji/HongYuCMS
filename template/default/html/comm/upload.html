@@ -1,13 +1,13 @@
  <!-- Bootstrap Fileinput-->
-<link href="{pboot:sitetplpath}/fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
-<link href="{pboot:sitetplpath}/fileinput/themes/explorer-fa/theme.css" media="all" rel="stylesheet" type="text/css"/>
-<script src="{pboot:sitetplpath}/fileinput/js/plugins/sortable.js" type="text/javascript"></script>
-<script src="{pboot:sitetplpath}/fileinput/js/fileinput.js" type="text/javascript"></script>
-<script src="{pboot:sitetplpath}/fileinput/js/locales/fr.js" type="text/javascript"></script>
-<script src="{pboot:sitetplpath}/fileinput/js/locales/es.js" type="text/javascript"></script>
-<script src="{pboot:sitetplpath}/fileinput/themes/explorer-fa/theme.js" type="text/javascript"></script>
-<script src="{pboot:sitetplpath}/fileinput/themes/fa/theme.js" type="text/javascript"></script>
-<script src="{pboot:sitetplpath}/fileinput/js/locales/zh.js" type="text/javascript"></script>
+<link href="{hongyu:sitetplpath}/fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="{hongyu:sitetplpath}/fileinput/themes/explorer-fa/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<script src="{hongyu:sitetplpath}/fileinput/js/plugins/sortable.js" type="text/javascript"></script>
+<script src="{hongyu:sitetplpath}/fileinput/js/fileinput.js" type="text/javascript"></script>
+<script src="{hongyu:sitetplpath}/fileinput/js/locales/fr.js" type="text/javascript"></script>
+<script src="{hongyu:sitetplpath}/fileinput/js/locales/es.js" type="text/javascript"></script>
+<script src="{hongyu:sitetplpath}/fileinput/themes/explorer-fa/theme.js" type="text/javascript"></script>
+<script src="{hongyu:sitetplpath}/fileinput/themes/fa/theme.js" type="text/javascript"></script>
+<script src="{hongyu:sitetplpath}/fileinput/js/locales/zh.js" type="text/javascript"></script>
 <!-- Bootstrap Fileinput End-->
 
 <!-- 单图片上传upload -->
@@ -109,11 +109,11 @@ $(document).on('ready', function() {
 	        elErrorContainer: '#kartik-file-errors',
 	        uploadAsync: false,
 	        maxFileCount: maxFileCount,
-	        uploadUrl: '{pboot:upload}'//文件上传接口
+	        uploadUrl: '{hongyu:upload}'//文件上传接口
 	     }).on("filebatchuploadsuccess", function (event, data, previewId, index) {
 	    	if(data.response.code){
 			    $(target).val(data.response.data);
-			    $("img"+target).attr("src","{pboot:sitepath}"+data.response.data);
+			    $("img"+target).attr("src","{hongyu:sitepath}"+data.response.data);
 			    $("#"+inputName).fileinput('reset');
 			    $("#uploadBox").modal("hide");
 			    $("#fileBox").modal("hide");

@@ -70,7 +70,7 @@ class FormController extends Controller
                 if (is_array($field_data)) { // 如果是多选等情况时转换
                     $field_data = implode(',', $field_data);
                 }
-                $field_data = preg_replace_r('/pboot:if/i', '', $field_data);
+                $field_data = preg_replace_r('/hongyu:if/i', '', $field_data);
                 if ($value->required && ! $field_data) {
                     alert_back($value->description . '不能为空！');
                 } else {

@@ -957,14 +957,14 @@ class ParserModel extends Model
         if ($page) {
             return parent::table('ay_member_comment a')->field($field)
                 ->join($join)
-                ->where("uid='" . session('pboot_uid') . "'")
+                ->where("uid='" . session('hongyu_uid') . "'")
                 ->order($order)
                 ->page(1, $num, $start)
                 ->select();
         } else {
             return parent::table('ay_member_comment a')->field($field)
                 ->join($join)
-                ->where("uid='" . session('pboot_uid') . "'")
+                ->where("uid='" . session('hongyu_uid') . "'")
                 ->order($order)
                 ->limit($start - 1, $num)
                 ->select();
@@ -974,7 +974,7 @@ class ParserModel extends Model
     // 删除评论
     public function delComment($id)
     {
-        return parent::table('ay_member_comment')->where("uid='" . session('pboot_uid') . "'")
+        return parent::table('ay_member_comment')->where("uid='" . session('hongyu_uid') . "'")
             ->where("id=$id")
             ->delete();
     }

@@ -5,12 +5,12 @@
 <div class="container pages">
 	{include file=comm/position.html}
 
-	{pboot:if({page:rows}>0)}
+	{hongyu:if({page:rows}>0)}
     	<h5 class="border-bottom border-info pb-2"><i class="fa fa-sliders" aria-hidden="true"></i> 留言记录</h5>
-	{/pboot:if}
+	{/hongyu:if}
 	 
 	<!-- 留言记录 -->
-    {pboot:message num=2}
+    {hongyu:message num=2}
     <div class="media border-bottom pb-3 pt-3">
 	  <img class="mr-3" src="[message:headpic]" height="25">
 	  <div class="media-body">
@@ -22,22 +22,22 @@
 	    	<span class="badge badge-light text-secondary font-weight-normal">[message:askdate]</span>
 	    </p>
 	    
-	    {pboot:if('[message:recontent]'!='')}
+	    {hongyu:if('[message:recontent]'!='')}
 	    <div class="media mt-3 border-top-dashed pt-3">
-	      <img class="mr-3" src="{pboot:sitetplpath}/images/user.png" height="25">
+	      <img class="mr-3" src="{hongyu:sitetplpath}/images/user.png" height="25">
 	      <div class="media-body">
 	        <h5 class="mt-0">管理员回复：</h5>
 	        <p>[message:recontent]</p>
 	        <p><span class="badge badge-light text-secondary font-weight-normal">[message:replydate]</span></p>
 	      </div>
 	    </div>
-	    {/pboot:if}
+	    {/hongyu:if}
 	  </div>
 	</div>
-	{/pboot:message}
+	{/hongyu:message}
 	
 	<!-- 分页 -->
- 	{pboot:if({page:rows}>0)}
+ 	{hongyu:if({page:rows}>0)}
 	<nav aria-label="page navigation" class="my-4">
       <div class="pagination justify-content-center">
       	<a class="page-item page-link" href="{page:index}">首页</a>
@@ -47,7 +47,7 @@
         <a class="page-item page-link" href="{page:last}">尾页</a>
       </div>
     </nav>
-    {/pboot:if}
+    {/hongyu:if}
     
     <!-- 留言表单 -->
     <div class="row">
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 
-                {pboot:if({pboot:msgcodestatus})}
+                {hongyu:if({hongyu:msgcodestatus})}
                 <div class="form-group">
                     <label for="checkcode">验证码</label>
                     <div class="row">
@@ -83,11 +83,11 @@
                             <input type="text" name="checkcode" required id="checkcode" class="form-control" placeholder="请输入验证码">
                         </div>
                         <div class="col-6">
-                            <img title="点击刷新" class="codeimg" style="height:33px;" src="{pboot:checkcode}" onclick="this.src='{pboot:checkcode}?'+Math.round(Math.random()*10);" />
+                            <img title="点击刷新" class="codeimg" style="height:33px;" src="{hongyu:checkcode}" onclick="this.src='{hongyu:checkcode}?'+Math.round(Math.random()*10);" />
                         </div>
                     </div>
                 </div>
-                {/pboot:if}
+                {/hongyu:if}
                 
                 <div class="form-group">
                    <button type="submit" class="btn btn-info mb-2">提交留言</button>
@@ -104,7 +104,7 @@
 
 //ajax提交留言
 function submsg(obj){
-  var url='{pboot:msgaction}';
+  var url='{hongyu:msgaction}';
   var contacts=$(obj).find("#contacts").val();
   var mobile=$(obj).find("#mobile").val();
   var content=$(obj).find("#content").val();

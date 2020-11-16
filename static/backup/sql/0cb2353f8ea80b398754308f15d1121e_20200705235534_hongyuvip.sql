@@ -238,12 +238,12 @@ CMS源码，能够满足各类企业网站开发建设的需要。系统采用�
     <strong><span style="font-size: 18px;">简单到想哭的标签：</span></strong>
 </p>
 <pre class="brush:html;toolbar:false">1、全局标签示意：
-{pboot:sitetitle} 站点标题 
-{pboot:sitelogo} 站点logo
+{hongyu:sitetitle} 站点标题
+{hongyu:sitelogo} 站点logo
 2、列表页标签示意：
-{pboot:list num=10 order=date}    
+{hongyu:list num=10 order=date}
     <p><a href="[list:link]">[list:title]</a></p>
-{/pboot:list}
+{/hongyu:list}
 3、内容页标签示意：
 {content:title} 标题
 {content:subtitle}副标题
@@ -297,12 +297,12 @@ CMS源码，能够满足各类企业网站开发建设的需要。系统采用�
     <strong><span style="font-size: 18px;">简单到想哭的标签：</span></strong>
 </p>
 <pre class="brush:html;toolbar:false">1、全局标签示意：
-{pboot:sitetitle} 站点标题 
-{pboot:sitelogo} 站点logo
+{hongyu:sitetitle} 站点标题
+{hongyu:sitelogo} 站点logo
 2、列表页标签示意：
-{pboot:list num=10 order=date}    
+{hongyu:list num=10 order=date}
     <p><a href="[list:link]">[list:title]</a></p>
-{/pboot:list}
+{/hongyu:list}
 3、内容页标签示意：
 {content:title} 标题
 {content:subtitle}副标题
@@ -319,12 +319,12 @@ Analytica利用从Facebook获得的大量用户数据，进行精准政治广告
 ('8','cn','3','','HongYuCMS主要功能介绍','#333333','','','admin','本站','','2018-04-12 10:10:18','/static/upload/image/20180412/1523499864406172.jpg','','<p>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 18px;">HongYuCMS是全新内核且永久开源免费的PHP企业网站开发建设管理系统，是一套高效、简洁、
  强悍的可免费商用的PHP 
 CMS源码，能够满足各类企业网站开发建设的需要。系统采用简单到想哭的模板标签，只要懂HTML就可快速开发企业网站。官方提供了大量网站模板免费下载和使用，将致力于为广大开发者和企业提供最佳的网站开发建设解决方案。</span></p><p>&nbsp;&nbsp;&nbsp;&nbsp;1、系统采用高效、简洁、强悍的模板标签，只要懂HTML就可快速开发企业网站；</p><p>&nbsp;&nbsp;&nbsp;&nbsp;2、系统采用PHP语言开发，使用自主研发的高速多层开发框架及缓存技术；</p><p>&nbsp;&nbsp;&nbsp;&nbsp;3、系统默认采用sqlite轻型数据库，放入PHP空间即可直接使用，可选mysql等数据库，满足各类存储需求；</p><p>&nbsp;&nbsp;&nbsp;&nbsp;4、系统采用响应式管理后台，满足各类设备随时管理的需要；</p><p>&nbsp;&nbsp;&nbsp;&nbsp;5、系统支持后台在线升级，满足系统及时升级更新的需要；</p><p>&nbsp;&nbsp;&nbsp;&nbsp;6、系统支持内容模型、多语言、自定义表单、筛选、多条件搜索、小程序、APP等功能；</p><p>&nbsp;&nbsp;&nbsp;&nbsp;7、系统支持多种URL模式及模型、栏目、内容自定义地址名称，满足各类网站推广优化的需要。<br/></p><p><br/></p><p><strong><span style="font-size: 18px;">源码托管地址：</span></strong></p><p>GitHub：<a href="https://github.com/hnaoyun/HongYuCMS" target="_blank">https://github.com/hnaoyun/HongYuCMS</a><br/></p><p>Gitee：<a href="https://gitee.com/hnaoyun/HongYuCMS" target="_blank" title="https://gitee.com/hnaoyun/HongYuCMS">https://gitee.com/hnaoyun/HongYuCMS</a></p><p><strong><span style="font-size: 18px;"><br/></span></strong></p><p><strong><span style="font-size: 18px;">简单到想哭的标签：</span></strong></p><pre class="brush:html;toolbar:false">1、全局标签示意：
-{pboot:sitetitle}&nbsp;站点标题&nbsp;
-{pboot:sitelogo}&nbsp;站点logo
+{hongyu:sitetitle}&nbsp;站点标题&nbsp;
+{hongyu:sitelogo}&nbsp;站点logo
 2、列表页标签示意：
-{pboot:list&nbsp;num=10&nbsp;order=date}&nbsp;&nbsp;&nbsp;&nbsp;
+{hongyu:list&nbsp;num=10&nbsp;order=date}&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;<p><a&nbsp;href="[list:link]">[list:title]</a></p>
-{/pboot:list}
+{/hongyu:list}
 3、内容页标签示意：
 {content:title}&nbsp;标题
 {content:subtitle}副标题
@@ -376,12 +376,12 @@ CMS源码，能够满足各类企业网站开发建设的需要。系统采用�
     <strong><span style="font-size: 18px;">简单到想哭的标签：</span></strong>
 </p>
 <pre class="brush:html;toolbar:false">1、全局标签示意：
-{pboot:sitetitle} 站点标题 
-{pboot:sitelogo} 站点logo
+{hongyu:sitetitle} 站点标题
+{hongyu:sitelogo} 站点logo
 2、列表页标签示意：
-{pboot:list num=10 order=date}    
+{hongyu:list num=10 order=date}
     <p><a href="[list:link]">[list:title]</a></p>
-{/pboot:list}
+{/hongyu:list}
 3、内容页标签示意：
 {content:title} 标题
 {content:subtitle}副标题
@@ -433,12 +433,12 @@ CMS源码，能够满足各类企业网站开发建设的需要。系统采用�
     <strong><span style="font-size: 18px;">简单到想哭的标签：</span></strong>
 </p>
 <pre class="brush:html;toolbar:false">1、全局标签示意：
-{pboot:sitetitle} 站点标题 
-{pboot:sitelogo} 站点logo
+{hongyu:sitetitle} 站点标题
+{hongyu:sitelogo} 站点logo
 2、列表页标签示意：
-{pboot:list num=10 order=date}    
+{hongyu:list num=10 order=date}
     <p><a href="[list:link]">[list:title]</a></p>
-{/pboot:list}
+{/hongyu:list}
 3、内容页标签示意：
 {content:title} 标题
 {content:subtitle}副标题
@@ -490,12 +490,12 @@ CMS源码，能够满足各类企业网站开发建设的需要。系统采用�
     <strong><span style="font-size: 18px;">简单到想哭的标签：</span></strong>
 </p>
 <pre class="brush:html;toolbar:false">1、全局标签示意：
-{pboot:sitetitle} 站点标题 
-{pboot:sitelogo} 站点logo
+{hongyu:sitetitle} 站点标题
+{hongyu:sitelogo} 站点logo
 2、列表页标签示意：
-{pboot:list num=10 order=date}    
+{hongyu:list num=10 order=date}
     <p><a href="[list:link]">[list:title]</a></p>
-{/pboot:list}
+{/hongyu:list}
 3、内容页标签示意：
 {content:title} 标题
 {content:subtitle}副标题
@@ -547,12 +547,12 @@ CMS源码，能够满足各类企业网站开发建设的需要。系统采用�
     <strong><span style="font-size: 18px;">简单到想哭的标签：</span></strong>
 </p>
 <pre class="brush:html;toolbar:false">1、全局标签示意：
-{pboot:sitetitle} 站点标题 
-{pboot:sitelogo} 站点logo
+{hongyu:sitetitle} 站点标题
+{hongyu:sitelogo} 站点logo
 2、列表页标签示意：
-{pboot:list num=10 order=date}    
+{hongyu:list num=10 order=date}
     <p><a href="[list:link]">[list:title]</a></p>
-{/pboot:list}
+{/hongyu:list}
 3、内容页标签示意：
 {content:title} 标题
 {content:subtitle}副标题
@@ -604,12 +604,12 @@ CMS源码，能够满足各类企业网站开发建设的需要。系统采用�
     <strong><span style="font-size: 18px;">简单到想哭的标签：</span></strong>
 </p>
 <pre class="brush:html;toolbar:false">1、全局标签示意：
-{pboot:sitetitle} 站点标题 
-{pboot:sitelogo} 站点logo
+{hongyu:sitetitle} 站点标题
+{hongyu:sitelogo} 站点logo
 2、列表页标签示意：
-{pboot:list num=10 order=date}    
+{hongyu:list num=10 order=date}
     <p><a href="[list:link]">[list:title]</a></p>
-{/pboot:list}
+{/hongyu:list}
 3、内容页标签示意：
 {content:title} 标题
 {content:subtitle}副标题
@@ -661,12 +661,12 @@ CMS源码，能够满足各类企业网站开发建设的需要。系统采用�
     <strong><span style="font-size: 18px;">简单到想哭的标签：</span></strong>
 </p>
 <pre class="brush:html;toolbar:false">1、全局标签示意：
-{pboot:sitetitle} 站点标题 
-{pboot:sitelogo} 站点logo
+{hongyu:sitetitle} 站点标题
+{hongyu:sitelogo} 站点logo
 2、列表页标签示意：
-{pboot:list num=10 order=date}    
+{hongyu:list num=10 order=date}
     <p><a href="[list:link]">[list:title]</a></p>
-{/pboot:list}
+{/hongyu:list}
 3、内容页标签示意：
 {content:title} 标题
 {content:subtitle}副标题
